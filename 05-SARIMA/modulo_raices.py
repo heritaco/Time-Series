@@ -25,6 +25,9 @@ def modulo_raices_12(p1=0, p2=0, p3=0, p4=0, p5=0, p6=0, p7=0, p8=0, p9=0, p10=0
     print("Raíces del polinomio característico:", raices)
     print("\nMódulo de las raíces:", modulo)
     print("\n¿Las raíces están fuera del circulo unitario? ", estacionario)
+
+    if estacionario:
+        print(":)")
     
     return
 
@@ -70,6 +73,9 @@ def modulo_raices_24(
     print("Raíces del polinomio característico:", raices)
     print("\nMódulo de las raíces:", modulo)
     print("\n¿Las raíces están fuera del círculo unitario? ", estacionario)
+
+    if estacionario:
+        print(":)")
 
     return
 
@@ -141,5 +147,8 @@ def modulo_raices_48(
     print("Raíces del polinomio característico:", raices)
     print("\nMódulo de las raíces:", modulo)
     print("\n¿Las raíces están fuera del círculo unitario? ", estacionario)
+
+    if estacionario:
+        print(":)")
 
     return
