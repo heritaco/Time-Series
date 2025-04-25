@@ -72,17 +72,16 @@ def modulo_raices_48(
 
 
 
-
 def estacionario(modelo):
 
     ars = []
     elevados = []
 
     # Filtrar solo los parámetros que comienzan con 'ar'
-    for i in modelo.params.index:
-        if i.startswith('ar'):
-            ars.append(-1 * modelo.params[i])
-            grado = int(i.split('L')[-1])
+    for name, coef in zip(modelo.param_names, modelo.params):
+        if name.startswith('ar'):
+            ars.append(-coef)
+            grado = int(name.split('L')[-1])
             elevados.append(grado)
 
     # Construir los argumentos para modulo_raices_12.
@@ -92,17 +91,16 @@ def estacionario(modelo):
         params_coef[f"p{grado}"] = coef
 
     print("El polinomio de la parte autoregresiva es:", params_coef)
-    
-
     print("")
-    # Llamar a la función modulo_raices_12 con los argumentos construidos
+    
+    # Llamar a la función modulo_raices_48 con los argumentos construidos
     estacionario = modulo_raices_48(**params_coef)
 
     if estacionario:
         print("\nEl modelo es estacionario\n\n:)")
     else:
         print("\nEl modelo no es estacionario")
-    
+
 
 
 
@@ -113,10 +111,10 @@ def invertible(modelo):
     elevados = []
 
     # Filtrar solo los parámetros que comienzan con 'ar'
-    for i in modelo.params.index:
-        if i.startswith('ma'):
-            ars.append(modelo.params[i])
-            grado = int(i.split('L')[-1])
+    for name, coef in zip(modelo.param_names, modelo.params):
+        if name.startswith('ma'):
+            ars.append(coef)
+            grado = int(name.split('L')[-1])
             elevados.append(grado)
 
     # Construir los argumentos para modulo_raices_12.
@@ -125,11 +123,10 @@ def invertible(modelo):
     for coef, grado in zip(ars, elevados):
         params_coef[f"p{grado}"] = coef
 
-    print("El polinomio de la parte media movil es:", params_coef)
-    
-
+    print("El polinomio de la parte media móvil es:", params_coef)
     print("")
-    # Llamar a la función modulo_raices_12 con los argumentos construidos
+    
+    # Llamar a la función modulo_raices_48 con los argumentos construidos
     estacionario = modulo_raices_48(**params_coef)
 
     if estacionario:

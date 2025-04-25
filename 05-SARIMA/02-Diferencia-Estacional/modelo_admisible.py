@@ -105,8 +105,6 @@ def estacionario(modelo):
     
 
 
-
-
 def invertible(modelo):
 
     ars = []
