@@ -1,4 +1,13 @@
 import numpy as np
+from scipy.stats import ttest_1samp
+
+def media_cero(modelo):
+    residuos=modelo.resid
+    pvalor = ttest_1samp(residuos, 0)[1] # Guardamos el p-valor
+    if pvalor < 0.05:
+        print(f"Los residuos no son cero, pvalor={pvalor}, media={residuos.mean()}")
+    else:
+        print(f"Los residuos son cero, pvalor={pvalor}, media={residuos.mean()}\n\n:)")
 
 def modulo_raices_48(
     p1=0, p2=0, p3=0, p4=0, p5=0, p6=0, p7=0, p8=0, p9=0, p10=0, 
