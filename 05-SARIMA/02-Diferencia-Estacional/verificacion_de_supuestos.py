@@ -40,7 +40,7 @@ def estacionario(modelo):
     # Filtrar solo los parámetros que comienzan con 'ar'
     for i in modelo.params.index:
         if i.startswith('ar'):
-            ars.append(-1 * modelo.params[i])
+            ars.append(-1 * modelo.params[i])   # !!! Se multiplica por -1 
             grado = int(i.split('L')[-1])
             elevados.append(grado)
 
